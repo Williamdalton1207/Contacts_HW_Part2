@@ -16,6 +16,7 @@
 		DF1FB0561D3EBF9B00089821 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FB0551D3EBF9B00089821 /* Contact.swift */; };
 		DF1FB0581D3F13B100089821 /* ViewControllerContactDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FB0571D3F13B100089821 /* ViewControllerContactDetails.swift */; };
 		DF1FB05A1D3F294D00089821 /* MyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FB0591D3F294D00089821 /* MyProtocol.swift */; };
+		DF1FB07E1D49B10F00089821 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1FB07D1D49B10F00089821 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		DF1FB0551D3EBF9B00089821 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		DF1FB0571D3F13B100089821 /* ViewControllerContactDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerContactDetails.swift; sourceTree = "<group>"; };
 		DF1FB0591D3F294D00089821 /* MyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProtocol.swift; sourceTree = "<group>"; };
+		DF1FB07D1D49B10F00089821 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				DF1FB0551D3EBF9B00089821 /* Contact.swift */,
 				DF1FB0571D3F13B100089821 /* ViewControllerContactDetails.swift */,
 				DF1FB0591D3F294D00089821 /* MyProtocol.swift */,
+				DF1FB07D1D49B10F00089821 /* DataManager.swift */,
 			);
 			path = Contacts_HW_Part2;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 				DF1FB0581D3F13B100089821 /* ViewControllerContactDetails.swift in Sources */,
 				DF1FB0561D3EBF9B00089821 /* Contact.swift in Sources */,
 				DF1FB0441D3EBC9900089821 /* ViewController.swift in Sources */,
+				DF1FB07E1D49B10F00089821 /* DataManager.swift in Sources */,
 				DF1FB05A1D3F294D00089821 /* MyProtocol.swift in Sources */,
 				DF1FB0421D3EBC9900089821 /* AppDelegate.swift in Sources */,
 				DF1FB0541D3EBE4E00089821 /* ContactNameCell.swift in Sources */,
@@ -304,6 +308,7 @@
 				DF1FB0521D3EBC9900089821 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

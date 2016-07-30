@@ -113,6 +113,13 @@
                                     <action selector="Add:" destination="ajF-D8-Qec" eventType="touchUpInside" id="OGp-xa-xnl"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f9s-uO-j1Q">
+                                <rect key="frame" x="394" y="82" width="46" height="30"/>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="Delete:" destination="ajF-D8-Qec" eventType="touchUpInside" id="h5r-fP-AdV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -120,6 +127,7 @@
                             <constraint firstItem="1NR-K7-MlU" firstAttribute="leading" secondItem="Uly-CE-hTp" secondAttribute="trailing" constant="40" id="62t-LR-pPW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="izA-CP-jGM" secondAttribute="trailing" id="L4h-12-33f"/>
                             <constraint firstItem="PQ0-Vo-ofS" firstAttribute="leading" secondItem="dcg-fu-v5Y" secondAttribute="leadingMargin" id="Psa-53-mEE"/>
+                            <constraint firstItem="f9s-uO-j1Q" firstAttribute="top" secondItem="99X-gk-ZPo" secondAttribute="bottom" constant="18" id="TnD-qh-yVm"/>
                             <constraint firstAttribute="trailingMargin" secondItem="1NR-K7-MlU" secondAttribute="trailing" id="aqe-Zz-5Z9"/>
                             <constraint firstItem="Uly-CE-hTp" firstAttribute="top" secondItem="99X-gk-ZPo" secondAttribute="bottom" constant="18" id="b0r-gn-9ZS"/>
                             <constraint firstItem="wbt-Gz-dbb" firstAttribute="leading" secondItem="dcg-fu-v5Y" secondAttribute="leadingMargin" id="bXH-3V-sBL"/>
@@ -130,6 +138,7 @@
                             <constraint firstItem="PQ0-Vo-ofS" firstAttribute="top" secondItem="izA-CP-jGM" secondAttribute="bottom" constant="20" id="jW2-MV-U1u"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wbt-Gz-dbb" secondAttribute="trailing" id="kWm-gi-5ny"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PQ0-Vo-ofS" secondAttribute="trailing" id="vN2-dk-f6b"/>
+                            <constraint firstItem="Uly-CE-hTp" firstAttribute="leading" secondItem="f9s-uO-j1Q" secondAttribute="trailing" constant="40" id="xY1-of-i6c"/>
                             <constraint firstItem="1NR-K7-MlU" firstAttribute="top" secondItem="99X-gk-ZPo" secondAttribute="bottom" constant="18" id="zIx-ET-PrR"/>
                             <constraint firstItem="Z1c-KU-4fN" firstAttribute="leading" secondItem="dcg-fu-v5Y" secondAttribute="leadingMargin" id="zb5-vT-oMV"/>
                         </constraints>

@@ -8,7 +8,7 @@
 
 import Foundation
 class Contact{
-    
+    let contactId : String = NSUUID().UUIDString
     var fName : String?
     var lName : String?
     var emailAddress : String?

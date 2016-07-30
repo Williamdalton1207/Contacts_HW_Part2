@@ -11,14 +11,25 @@ import UIKit
 
 class ViewControllerContactDetails: UIViewController{
     
-    var delegate: ViewControllerContactDetailsDelegate?
+    //var delegate: ViewControllerContactDetailsDelegate?
+    @IBAction func Delete(sender: UIButton) {
+        if let cont : Contact = contact!{
+            if !DataManager.sharedManager.deleteContact(cont){
+                
+                let alert = UIAlertController(title: "Alert", message: "Contact not deleted", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                
+                
+            }
+        }
+    }
 
     @IBAction func Add(sender: AnyObject) {
         let fname = self.firstName.text
         let lname = self.lastName.text
         let emailAdd = self.emailAddress.text
         let phoneNbr = self.phoneNbr.text
-        let action = "Add"
+       // let action = "Add"
         if let cont : Contact = contact!{
             if cont.emailAddress! == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
                 let alert = UIAlertController(title: "Alert", message: "Contact Already Exists", preferredStyle: UIAlertControllerStyle.Alert)
@@ -27,9 +38,18 @@ class ViewControllerContactDetails: UIViewController{
             }
             else{
                 let con = Contact(firstName: fname, lastName: lname, EmailAddress: emailAdd, PhoneNbr: phoneNbr)
-                if let delegate = self.delegate {
-                    delegate.controller(self, didAddItem: con, editAction: action)
+                if !DataManager.sharedManager.addContact(con) {
+                    
+                    let alert = UIAlertController(title: "Alert", message: "Contact Already Exists", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert,animated: true, completion: nil)
                 }
+
+
+//                if let delegate = self.delegate {
+//                    delegate.controller(self, didAddItem: con, editAction: action)
+//                    
+//                }
             }
         }
     }
@@ -38,7 +58,7 @@ class ViewControllerContactDetails: UIViewController{
         let lname = self.lastName.text
         let emailAdd = self.emailAddress.text
         let phoneNbr = self.phoneNbr.text
-        let action = "Update"
+        //let action = "Update"
         if let cont : Contact = contact!{
             if cont.emailAddress! == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
                 let alert = UIAlertController(title: "Alert", message: "No Changes Detected", preferredStyle: UIAlertControllerStyle.Alert)
@@ -46,10 +66,24 @@ class ViewControllerContactDetails: UIViewController{
                 self.presentViewController(alert,animated: true, completion: nil)
             }
             else{
-            let con = Contact(firstName: fname, lastName: lname, EmailAddress: emailAdd, PhoneNbr: phoneNbr)
-            if let delegate = self.delegate {
-                delegate.controller(self, didAddItem: con, editAction: action)
-            }
+                if let con : Contact = contact{
+                    con.fName = self.firstName.text
+                    con.lName = self.lastName.text
+                    con.emailAddress = self.emailAddress.text
+                    con.phoneNbr = self.phoneNbr.text
+                    if !DataManager.sharedManager.updateContact(con){
+                        
+                        let alert = UIAlertController(title: "Alert", message: "Contact details not changed", preferredStyle: UIAlertControllerStyle.Alert)
+                        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                        
+                    }
+
+
+
+//                    if let delegate = self.delegate {
+//                        delegate.controller(self, didAddItem: con, editAction: action)
+//                    }
+                }
             }
         }
     }
