@@ -28,7 +28,9 @@ class ViewController: UIViewController, UITableViewDataSource//, ViewControllerC
     }
     func gotNotification(){
         tableViewContacts.reloadData()
-        navigationController!.popViewControllerAnimated(true)
+        if let nav = navigationController{
+            nav.popViewControllerAnimated(true)
+        }
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

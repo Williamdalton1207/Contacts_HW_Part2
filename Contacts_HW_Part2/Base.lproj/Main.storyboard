@@ -58,7 +58,13 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Gf2-PN-9Cf" secondAttribute="bottom" id="mbw-VO-528"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Contacts" id="mlB-E5-B1H"/>
+                    <navigationItem key="navigationItem" title="Contacts" id="mlB-E5-B1H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rZe-Lc-3Sw">
+                            <connections>
+                                <segue destination="ajF-D8-Qec" kind="show" id="793-b4-xQh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableViewContacts" destination="Gf2-PN-9Cf" id="iRH-Ge-HLZ"/>
                     </connections>
@@ -176,4 +182,7 @@
             <point key="canvasLocation" x="334" y="-337"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="tOn-iw-rci"/>
+    </inferredMetricsTieBreakers>
 </document>

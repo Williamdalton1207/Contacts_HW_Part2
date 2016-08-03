@@ -7,15 +7,18 @@
 //
 
 import Foundation
+
 let CONTACT_CHANGED_NOTIFICATION = "CONTACT_CHANGED"
 let CONTACT_ADDED_NOTIFICATION = "CONTACT_ADDED"
 let CONTACT_DELETED_NOTIFICATION = "CONTACT_DELETED"
 class DataManager {
-    var contactsData = [
-        Contact(firstName: "Bill", lastName: "Evans", EmailAddress: "billevans@gmail.com",PhoneNbr: "123456789"),
-        Contact(firstName: "Oscar", lastName: "Peterson", EmailAddress: "op@gmail.com",PhoneNbr: "123456123"),
-        Contact(firstName: "William", lastName: "Dalton", EmailAddress: "WP@gmail.com",PhoneNbr: "123456000")]
 
+    private var contactsData : [Contact]
+    init() {
+        
+        self.contactsData = [Contact]()
+        self.contactsData = self.loadContacts()
+    }
     static let sharedManager : DataManager = DataManager()
     func publishMessage(message : String, noticationChangeType : String){
         
@@ -25,10 +28,13 @@ class DataManager {
         center.postNotificationName(noticationChangeType, object: nil, userInfo: userInfo)
         
     }
-
-    func getContacts() -> [Contact]{
-            return contactsData
+    func getContacts() -> [Contact] {
+        
+        self.contactsData = loadContacts()
+        
+        return self.contactsData
     }
+
     //Return false if the contact didn't exist
     func updateContact(updatedContact : Contact) -> Bool{
         var updated: Bool = false
@@ -40,10 +46,12 @@ class DataManager {
                 con.lName = updatedContact.lName
                 con.phoneNbr = updatedContact.phoneNbr
                 updated = true
+                self.saveContacts()
                 publishMessage("Contact Updated",noticationChangeType: CONTACT_CHANGED_NOTIFICATION)
                 break
             }
         }
+        
         return updated
     }
     func deleteContact(contact : Contact) -> Bool{
@@ -53,6 +61,7 @@ class DataManager {
             if con.contactId == contact.contactId{
                 contactsData.removeAtIndex(index)
                 success=true
+                self.saveContacts()
                 publishMessage("Contact Deleted",noticationChangeType: CONTACT_DELETED_NOTIFICATION)
                 break
             }
@@ -70,8 +79,38 @@ class DataManager {
         }
         if success==true{
             contactsData.append(newContact)
+             self.saveContacts()
             publishMessage("Contact Added",noticationChangeType: CONTACT_ADDED_NOTIFICATION)
+           
         }
         return success
+    }
+    private func saveContacts() {
+        
+        let destinationPath =  self.filePathForArchiving()
+        NSKeyedArchiver.archiveRootObject(self.contactsData, toFile:destinationPath)
+        
+    }
+    private func loadContacts() -> [Contact] {
+        
+        let destinationPath = self.filePathForArchiving()
+        
+        if let contacts : [Contact] = NSKeyedUnarchiver.unarchiveObjectWithFile(destinationPath) as? [Contact] {
+            
+            return contacts
+        }
+        
+        return [Contact]()
+        
+    }
+    
+    
+    
+    private func filePathForArchiving() -> String {
+        
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
+        let destinationPath = "\(documentsPath)/SavedContacts"
+        
+        return destinationPath
     }
 }

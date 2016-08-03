@@ -13,7 +13,7 @@ class ViewControllerContactDetails: UIViewController{
     
     //var delegate: ViewControllerContactDetailsDelegate?
     @IBAction func Delete(sender: UIButton) {
-        if let cont : Contact = contact!{
+        if let cont : Contact = contact{
             if !DataManager.sharedManager.deleteContact(cont){
                 
                 let alert = UIAlertController(title: "Alert", message: "Contact not deleted", preferredStyle: UIAlertControllerStyle.Alert)
@@ -30,8 +30,9 @@ class ViewControllerContactDetails: UIViewController{
         let emailAdd = self.emailAddress.text
         let phoneNbr = self.phoneNbr.text
        // let action = "Add"
-        if let cont : Contact = contact!{
-            if cont.emailAddress! == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
+        
+        if let cont : Contact = contact{
+            if cont.emailAddress == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
                 let alert = UIAlertController(title: "Alert", message: "Contact Already Exists", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert,animated: true, completion: nil)
@@ -52,6 +53,17 @@ class ViewControllerContactDetails: UIViewController{
 //                }
             }
         }
+        else{
+            let con = Contact(firstName: fname, lastName: lname, EmailAddress: emailAdd, PhoneNbr: phoneNbr)
+            
+            if !DataManager.sharedManager.addContact(con) {
+                
+                let alert = UIAlertController(title: "Alert", message: "Contact Already Exists", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert,animated: true, completion: nil)
+            }
+            
+        }
     }
     @IBAction func Update(sender: AnyObject) {
         let fname = self.firstName.text
@@ -59,8 +71,8 @@ class ViewControllerContactDetails: UIViewController{
         let emailAdd = self.emailAddress.text
         let phoneNbr = self.phoneNbr.text
         //let action = "Update"
-        if let cont : Contact = contact!{
-            if cont.emailAddress! == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
+        if let cont = contact{
+            if cont.emailAddress == emailAdd && cont.fName == fname && cont.lName == lname && cont.phoneNbr == phoneNbr {
                 let alert = UIAlertController(title: "Alert", message: "No Changes Detected", preferredStyle: UIAlertControllerStyle.Alert)
                 alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
                 self.presentViewController(alert,animated: true, completion: nil)
@@ -97,7 +109,7 @@ class ViewControllerContactDetails: UIViewController{
     var contact : Contact?
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let con : Contact = contact!{
+        if let con : Contact = contact{
             firstName.text = con.fName
             lastName.text = con.lName
             emailAddress.text = con.emailAddress
